@@ -116,7 +116,7 @@ async def on_afk(event):
             )
         else:
             message_to_reply = (
-                f"`I am AFK\n\nAFK Since :{endtime}\nReason : Not Mentioned ( ಠ ʖ̯ ಠ)`"
+                f"`I am AFK\n\nAFK Since :{endtime}\nReason : he didn't give reason so fuck off 🖕🏻`"
             )
         if event.chat_id not in Config.UB_BLACK_LIST_CHAT:
             msg = await event.reply(message_to_reply)
