@@ -29,8 +29,8 @@ from .sql_helper.mute_sql import is_muted, mute, unmute
 
 PP_TOO_SMOL = "`The image is too small`"
 PP_ERROR = "`Failure while processing the image`"
-NO_ADMIN = "`I am not an admin nub nibba!`"
-NO_PERM = "`I don't have sufficient permissions! This is so sed. Alexa play despacito`"
+NO_ADMIN = "`make me admeme bruhhh!`"
+NO_PERM = "`give me rights bruhhh`"
 CHAT_PP_CHANGED = "`Chat Picture Changed`"
 INVALID_MEDIA = "`Invalid Extension`"
 
@@ -138,7 +138,7 @@ async def promote(promt):
         return
     try:
         await promt.client(EditAdminRequest(promt.chat_id, user.id, new_rights, rank))
-        await catevent.edit("`Promoted Successfully! Now gib Party`")
+        await catevent.edit("`Promoted!`")
     except BadRequestError:
         await catevent.edit(NO_PERM)
         return
@@ -182,7 +182,7 @@ async def demote(dmod):
     except BadRequestError:
         await catevent.edit(NO_PERM)
         return
-    await catevent.edit("`Demoted Successfully! Betterluck next time`")
+    await catevent.edit("`Demoted fuck off now`")
     if BOTLOG:
         await dmod.client.send_message(
             BOTLOG_CHATID,
@@ -281,7 +281,7 @@ async def startmute(event):
     if event.fwd_from:
         return
     if event.is_private:
-        await event.edit("Unexpected issues or ugly errors may occur!")
+        await event.edit("error occurred sed lyf!")
         await sleep(3)
         await event.get_reply_message()
         userid = event.chat_id
@@ -289,14 +289,14 @@ async def startmute(event):
         chat_id = event.chat_id
         if is_muted(userid, chat_id):
             return await event.edit(
-                "This user is already muted in this chat ~~lmfao sed rip~~"
+                "This user is already muted ~~lmfao 😂~~"
             )
         try:
             mute(userid, chat_id)
         except Exception as e:
             await event.edit("Error occured!\nError is " + str(e))
         else:
-            await event.edit("Successfully muted that person.\n**｀-´)⊃━☆ﾟ.*･｡ﾟ **")
+            await event.edit("Successfully muted .\n**｀- stfu bruhhh")
         if BOTLOG:
             await event.client.send_message(
                 BOTLOG_CHATID,
@@ -310,7 +310,7 @@ async def startmute(event):
         if not user:
             return
         if user.id == bot.uid:
-            return await edit_or_reply(event, "Sorry, I can't mute myself")
+            return await edit_or_reply(event, "noob, I can't mute myself")
         if is_muted(user.id, event.chat_id):
             return await edit_or_reply(
                 event, "This user is already muted in this chat ~~lmfao sed rip~~"
@@ -320,7 +320,7 @@ async def startmute(event):
             creator = chat.creator
             if not admin and not creator:
                 await edit_or_reply(
-                    event, "`You can't mute a person without admin rights niqq.` ಥ﹏ಥ  "
+                    event, "`You can't mute a person without admin rights.` sed lyf "
                 )
                 return
             result = await event.client(
@@ -332,7 +332,7 @@ async def startmute(event):
                 if result.participant.banned_rights.send_messages:
                     return await edit_or_reply(
                         event,
-                        "This user is already muted in this chat ~~lmfao sed rip~~",
+                        "This user is already muted ~~lmfao~~",
                     )
             except:
                 pass
@@ -342,11 +342,11 @@ async def startmute(event):
                 if chat.admin_rights.delete_messages is not True:
                     return await edit_or_reply(
                         event,
-                        "`You can't mute a person if you dont have delete messages permission. ಥ﹏ಥ`",
+                        "`You can't mute a person if you dont have delete messages permission. Sed lyf",
                     )
             elif "creator" not in vars(chat):
                 return await edit_or_reply(
-                    event, "`You can't mute a person without admin rights niqq.` ಥ﹏ಥ  "
+                    event, "`You can't mute a person without admin rights.` sed lyf `"
                 )
             try:
                 mute(user.id, event.chat_id)
@@ -386,14 +386,14 @@ async def endmute(event):
         chat_id = event.chat_id
         if not is_muted(userid, chat_id):
             return await event.edit(
-                "__This user is not muted in this chat__\n（ ^_^）o自自o（^_^ ）"
+                "__This user is not muted in this chat__\n O W O "
             )
         try:
             unmute(userid, chat_id)
         except Exception as e:
             await event.edit("Error occured!\nError is " + str(e))
         else:
-            await event.edit("Successfully unmuted that person\n乁( ◔ ౪◔)「    ┑(￣Д ￣)┍")
+            await event.edit("Successfully unmuted that person\n(no shhiit talking")
         if BOTLOG:
             await event.client.send_message(
                 BOTLOG_CHATID,
@@ -423,12 +423,12 @@ async def endmute(event):
                 except:
                     return await edit_or_reply(
                         event,
-                        "This user can already speak freely in this chat ~~lmfao sed rip~~",
+                        "This user can already speak freely. ~~😇~~",
                     )
         except Exception as e:
             return await edit_or_reply(event, f"**Error : **`{str(e)}`")
         await edit_or_reply(
-            event, "Successfully unmuted that person\n乁( ◔ ౪◔)「    ┑(￣Д ￣)┍"
+            event, "Successfully unmuted that person\n O W O"
         )
         if BOTLOG:
             await event.client.send_message(
