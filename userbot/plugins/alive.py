@@ -9,8 +9,8 @@ from . import StartTime, catdef, catversion, hmention, mention, reply_id
 
 
 CAT_IMG = Config.ALIVE_PIC
-CUSTOM_ALIVE_TEXT = Config.CUSTOM_ALIVE_TEXT or "✮ MY BOT IS RUNNING SUCCESSFULLY ✮"
-EMOJI = Config.CUSTOM_ALIVE_EMOJI or "✧✧"
+CUSTOM_ALIVE_TEXT = Config.CUSTOM_ALIVE_TEXT or " BOT IS WORKING "
+EMOJI = Config.CUSTOM_ALIVE_EMOJI or "🖤"
 
 
 @bot.on(admin_cmd(outgoing=True, pattern="alive$"))
@@ -31,11 +31,8 @@ async def amireallyalive(alive):
         cat_caption += (
             f"<b>{EMOJI} Telethon version :</b> <code>{version.__version__}</code>\n"
         )
-        cat_caption += (
-            f"<b>{EMOJI} Catuserbot Version :</b> <code>{catversion}</code>\n"
-        )
         cat_caption += f"<b>{EMOJI} Database :</b> <code>{check_sgnirts}</code>\n\n"
-        cat_caption += "    <a href = https://github.com/sandy1709/catuserbot><b>GoodCat</b></a> | <a href = https://github.com/Jisan09/catuserbot><b>BadCat</b></a> | <a href = https://t.me/catuserbot_support><b>Support</b></a>"
+        cat_caption += "    <a href = https://t.me/ElitesOfAnime><b>chekout</b></a> | <a href = https://t.me/elitesofrobot><b>chizuru</b></a> | <a href = https://t.me/elitesofsupport><b>Support</b></a>"
         await alive.client.send_file(
             alive.chat_id,
             CAT_IMG,
@@ -54,9 +51,8 @@ async def amireallyalive(alive):
             f"<b>{EMOJI} Uptime :</b> <code>{uptime}</code>\n"
             f"<b>{EMOJI} Python Version :</b> <code>{python_version()}</code>\n"
             f"<b>{EMOJI} Telethon version :</b> <code>{version.__version__}</code>\n"
-            f"<b>{EMOJI} Catuserbot Version :</b> <code>{catversion}</code>\n"
             f"<b>{EMOJI} Database :</b> <code>{check_sgnirts}</code>\n\n"
-            "    <a href = https://github.com/sandy1709/catuserbot><b>GoodCat</b></a> | <a href = https://github.com/Jisan09/catuserbot><b>BadCat</b></a> | <a href = https://t.me/catuserbot_support><b>Support</b></a>",
+            "    <a href = https://t.me/ElitesOfAnime><b>chekout</b></a> | <a href = https://t.me/elitesofrobot><b>chizuru</b></a> | <a href = https://t.me/elitesofsupport><b>Support</b></a>",
             parse_mode="html",
         )
 
@@ -68,11 +64,10 @@ async def amireallyalive(alive):
         return
     tgbotusername = Config.TG_BOT_USER_NAME_BF_HER
     reply_to_id = await reply_id(alive)
-    cat_caption = f"**Catuserbot is Up and Running**\n"
+    cat_caption = f"**bot is Up and Running**\n"
     cat_caption += f"**  -Master :** {mention}\n"
     cat_caption += f"**  -Python Version :** `{python_version()}\n`"
     cat_caption += f"**  -Telethon version :** `{version.__version__}\n`"
-    cat_caption += f"**  -Catuserbot Version :** `{catversion}`\n"
     results = await bot.inline_query(tgbotusername, cat_caption)  # pylint:disable=E0602
     await results[0].click(alive.chat_id, reply_to=reply_to_id, hide_via=True)
     await alive.delete()
