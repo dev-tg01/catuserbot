@@ -32,7 +32,7 @@ async def amireallyalive(alive):
             f"<b>{EMOJI} Telethon version :</b> <code>{version.__version__}</code>\n"
         )
         cat_caption += f"<b>{EMOJI} Database :</b> <code>{check_sgnirts}</code>\n\n"
-        cat_caption += "    <a href = https://t.me/ElitesOfAnime><b>chekout</b></a> | <a href = https://t.me/elitesofrobot><b>chizuru</b></a> | <a href = https://t.me/elitesofsupport><b>Support</b></a>"
+        cat_caption += "    <a href = https://t.me/ElitesOfAnime><b>chekout.</b></a> | <a href = https://t.me/elitesofrobot><b>chizuru</b></a> | <a href = https://t.me/elitesofsupport><b>Support</b></a>"
         await alive.client.send_file(
             alive.chat_id,
             CAT_IMG,
